@@ -1,10 +1,10 @@
 <div [ngClass]="(player.color == 'red')? 'mat-red':'mat-yellow'">
    
 <div class="row">
-    <h1>Ganador {{player.name}}</h1> 
+    <h1>Win {{player.name}}</h1> 
 </div>
 <div class="row end-xs">
-    <button mat-raised-button [mat-dialog-close]="'exit'" color="warm" style="margin-right: 15px;">
+    <button mat-raised-button [mat-dialog-close]="'exit'" color="warn" style="margin-right: 15px;">
         Exit
     </button>
     <button mat-raised-button color="primary" [mat-dialog-close]="'next'">

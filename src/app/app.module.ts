@@ -32,6 +32,7 @@ import { GameComponent } from './game/game.component';
 import { PlayersComponent } from './players/players.component';
 import { AlertWinComponent } from './alert-win/alert-win.component';
 import { AlertExitComponent } from './alert-exit/alert-exit.component';
+import { AlertWinnerComponent } from './alert-winner/alert-winner.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { AlertExitComponent } from './alert-exit/alert-exit.component';
     GameComponent,
     PlayersComponent,
     AlertWinComponent,
-    AlertExitComponent
+    AlertExitComponent,
+    AlertWinnerComponent
   ],
   imports: [
     BrowserModule,

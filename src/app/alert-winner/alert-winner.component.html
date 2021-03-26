@@ -1,0 +1,11 @@
+<div  [ngClass]="(player.color == 'red')? 'mat-red':'mat-yellow'">
+    <div class="row center-xs">
+        <h1>{{player.name}} is the winner</h1>
+    </div>
+    <img src="../../assets/winner.svg" alt="winner" height="400px">
+    <div class="row center-xs">
+        <button mat-raised-button color="primary" [mat-dialog-close]>
+            Continue
+        </button>
+    </div>
+</div>

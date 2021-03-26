@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AlertWinComponent } from '../alert-win/alert-win.component';
+import { AlertWinnerComponent } from '../alert-winner/alert-winner.component';
 import { Player } from '../models/player.model';
 import { PlayersService } from '../service/players.service';
 
@@ -71,7 +72,6 @@ export class GameComponent implements OnInit {
   someWinner(col: number, fil: number, color: string ) {
     const horizontal = this.calcRight(col,fil,color) + this.calcLeft(col,fil,color);
     const vertical = this.calcDown(col,fil,color);
-
     const diagRighDowntLeftUp = this.calcRightDown(col,fil,color) + this.calcLeftUp(col,fil,color) -1;
     const diagleftLeftDownRightUp =  this.calcLeftDown(col,fil,color) + this.calcRightUp(col,fil,color) -1;
 
@@ -81,6 +81,12 @@ export class GameComponent implements OnInit {
       if(this.nGameA <= this.nGames) {
         // borrar tablero y alert
         this.openDialog(this.turn);
+      } else {
+        if(this.player1.points > this.player2.points) {
+          this.openDialogWinner(this.player1);
+        }else{
+          this.openDialogWinner(this.player2);
+        }
       }
     }
   }
@@ -199,9 +205,20 @@ export class GameComponent implements OnInit {
       if (result === 'exit') {
         // Return Home
         this.router.navigateByUrl("");
+        this.playersService.endGame();
       } else {
         this.table = [['', '', '', '', '', ''],['', '', '', '', '', ''],['', '', '', '', '', ''],['', '', '', '', '', ''],['', '', '', '', '', ''],['', '', '', '', '', ''],['', '', '', '', '', '']];
       }
+    });
+  }
+  openDialogWinner(player: Player) {
+    const dialogRef = this.dialog.open(AlertWinnerComponent, {
+      data: player
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.router.navigateByUrl("");
+      this.playersService.endGame();
     });
   }
 }
