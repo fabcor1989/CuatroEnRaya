@@ -50,19 +50,77 @@ export class GameComponent implements OnInit {
 
   addF(col: number) {
     // agregar en columna 
+    let  fil = 0 ;
     for (let index = 0; index < this.table[col].length; index++) {
       if(this.table[col][index] === '') {
         this.table[col][index] = this.turn.color;
+        fil = index
         break;
       }
     }
     console.log(this.table);
 
     //calcular Ganador
-
+    this.someWinner(col,fil,this.turn.color);
     //Pasar turno
     this.siguienteTurno();
   }
 
+  someWinner(col: number, fil: number, color: string ) {
+    let horizontal = this.calcRight(col,fil,color) + this.calcLeft(col,fil,color);
+    let vertical = this.calcDown(col,fil,color);
+    console.log(vertical)
+  }
 
+  calcRight(col: number, fil: number, color: string) {
+    let count = 0 ;
+    for (let index = col; index < this.table.length; index++) {
+      const element = this.table[index][fil];
+      if (element === color) {
+        count++;
+      } else {
+        break;
+      }
+    }
+    return count;
+  }
+
+  calcLeft(col: number, fil: number, color: string) {
+    let count = 0 ;
+    for (let index = col-1; index > -1; index--) {
+      const element = this.table[index][fil];
+      if (element === color) {
+        count++;
+      } else {
+        break;
+      }
+    }
+    return count;
+  }
+
+  // calcUp(col: number, fil: number, color: string) {
+  //   let count = 0 ;
+  //   for (let index = fil; index < this.table[col].length; index++) {
+  //     const element = this.table[col][index];
+  //     if (element === color) {
+  //       count++;
+  //     } else {
+  //       break;
+  //     }
+  //   }
+  //   return count;
+  // }
+
+  calcDown(col: number, fil: number, color: string) {
+    let count = 0 ;
+    for (let index = fil; index < this.table[col].length; index--) {
+      const element = this.table[col][index];
+      if (element === color) {
+        count++;
+      } else {
+        break;
+      }
+    }
+    return count;
+  }
 }
