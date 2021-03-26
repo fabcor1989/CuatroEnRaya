@@ -5,3 +5,7 @@
 .mat-yellow {
     border-top: solid 30px yellow;
 }
+
+::ng-deep .mat-dialog-container {
+    padding: 0px;
+}
