@@ -1,0 +1,84 @@
+.struct {
+    background: #2c5ada;
+    height: 100px;
+    width: 100px;
+}
+
+.free {
+    background: white;
+    fill: #fff;
+}
+
+
+.container {
+    height: 100%;
+    width: 100%;
+    flex-wrap: wrap;
+    background: linear-gradient(to right, #9cecfb, #65c7f7, #0052d4);
+    align-content: center;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+.colf{
+    border-top: 7px solid;
+    border-left: 7px solid;
+    border-bottom: 7px solid;
+}
+
+.colm {
+        border-top: 7px solid;
+        border-bottom: 7px solid;
+}
+
+.colE{
+    border-top: 7px solid;
+    border-right: 7px solid;
+    border-bottom: 7px solid;
+}
+
+.col:hover .struct {
+    background: #112250;
+    cursor: pointer;
+}
+
+
+h1#nameGame {
+    font-family: 'Changa', sans-serif;
+    font-weight: 700;
+    font-size: 50px;
+    }
+
+
+.pointer {
+    font-size: 30px;
+    margin: 10px;
+}
+
+.player {
+    font-family: 'Changa', sans-serif;
+    font-size: 20px;
+}
+
+.mat-card#red {
+    border-top: solid 30px red;
+}
+
+.mat-card#yellow {
+    border-top: solid 30px yellow;
+}
+
+.margTop {
+    margin-top: 10px;
+}
+
+.fichRed{
+    fill: rgb(255, 0, 0);
+}
+
+.fichYellow{
+    fill: yellow
+}

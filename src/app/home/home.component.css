@@ -1,0 +1,30 @@
+
+.rowP {
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(to right, #9cecfb, #65c7f7, #0052d4);
+    align-content: center;
+}
+
+h1#title {
+font-family: 'Changa', sans-serif;
+font-weight: 800;
+font-size: 100px;
+margin-bottom: 45px;
+}
+
+
+h1#nameGame {
+    font-family: 'Changa', sans-serif;
+    font-weight: 800;
+    font-size: 80px;
+    
+    }
+
+.logo{
+    width: 400px;
+    height: auto;
+}
+.margTop{
+    margin-top: 10px;
+}
