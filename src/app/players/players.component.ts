@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Player } from '../models/player.model';
 import { PlayersService } from '../service/players.service';
 
@@ -13,7 +14,8 @@ export class PlayersComponent implements OnInit {
   formPlayers: FormGroup;
   nGamesArray = [3, 5];
   constructor(private formBuild: FormBuilder,
-              private playerService: PlayersService) {
+              private playerService: PlayersService,
+              ) {
     this.buildForm();
   }
 

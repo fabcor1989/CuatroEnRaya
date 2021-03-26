@@ -17,7 +17,7 @@ export class PlayersService {
     this.player1.next(player1);
     this.player2.next(player2);
     this.nGames.next(nGames);
-    this.router.navigateByUrl('/game')
+    this.router.navigateByUrl('/game');
   }
 
   endGame() {
@@ -25,4 +25,5 @@ export class PlayersService {
     this.player2.next(undefined);
     this.nGames.next(undefined);
   }
+
 }

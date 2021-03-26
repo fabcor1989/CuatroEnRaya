@@ -1,1 +1,14 @@
-<p>alert-win works!</p>
+<div [ngClass]="(player.color == 'red')? 'mat-red':'mat-yellow'">
+   
+<div class="row">
+    <h1>Ganador</h1> {{player.name}}
+</div>
+<div class="row end-xs">
+    <button mat-raised-button [mat-dialog-close]="'exit'" color="warm" style="margin-left: 10px;">
+        Exit
+    </button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="'next'">
+        Next Game
+    </button>
+</div>
+</div>

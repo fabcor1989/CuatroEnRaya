@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { AlertWinComponent } from '../alert-win/alert-win.component';
 import { Player } from '../models/player.model';
 import { PlayersService } from '../service/players.service';
 
@@ -19,7 +21,8 @@ export class GameComponent implements OnInit {
   table = [['', '', '', '', '', ''],['', '', '', '', '', ''],['', '', '', '', '', ''],['', '', '', '', '', ''],['', '', '', '', '', ''],['', '', '', '', '', ''],['', '', '', '', '', '']];
 
   constructor(private playersService: PlayersService,
-              private router: Router  ) { }
+              private router: Router,
+              public dialog: MatDialog) { }
 
   ngOnInit(): void {
     if (!this.playersService.player1.value && !this.playersService.player2.value && !this.playersService.nGames.value) {
@@ -58,7 +61,6 @@ export class GameComponent implements OnInit {
         break;
       }
     }
-    console.log(this.table);
 
     //calcular Ganador
     this.someWinner(col,fil,this.turn.color);
@@ -67,9 +69,20 @@ export class GameComponent implements OnInit {
   }
 
   someWinner(col: number, fil: number, color: string ) {
-    let horizontal = this.calcRight(col,fil,color) + this.calcLeft(col,fil,color);
-    let vertical = this.calcDown(col,fil,color);
-    console.log(vertical)
+    const horizontal = this.calcRight(col,fil,color) + this.calcLeft(col,fil,color);
+    const vertical = this.calcDown(col,fil,color);
+
+    const diagRighDowntLeftUp = this.calcRightDown(col,fil,color) + this.calcLeftUp(col,fil,color) -1;
+    const diagleftLeftDownRightUp =  this.calcLeftDown(col,fil,color) + this.calcRightUp(col,fil,color) -1;
+
+    if((horizontal | vertical | diagRighDowntLeftUp| diagleftLeftDownRightUp) >= 4 ) {
+      this.turn.points++;
+      this.nGameA++;
+      if(this.nGameA <= this.nGames) {
+        // borrar tablero y alert
+        this.openDialog(this.turn);
+      }
+    }
   }
 
   calcRight(col: number, fil: number, color: string) {
@@ -122,5 +135,73 @@ export class GameComponent implements OnInit {
       }
     }
     return count;
+  }
+
+  calcRightDown(col: number, fil: number, color: string) {
+    let count = 0;
+    for(let c = col, f = fil; c < this.table.length && f < this.table[col].length; c++, f-- ) {
+      const element = this.table[c][f];
+      if (element === color) {
+        count++;
+      } else {
+        break;
+      }
+    }
+    return count;
+  }
+
+  calcLeftDown(col: number, fil: number, color: string) {
+    let count = 0;
+    for(let c = col, f = fil; c > -1  && f < this.table[col].length; c--, f-- ) {
+      const element = this.table[c][f];
+      if (element === color) {
+        count++;
+      } else {
+        break;
+      }
+    }
+    return count;
+  }
+
+
+  calcLeftUp(col: number, fil: number, color: string) {
+    let count = 0;
+    for(let c = col, f = fil; c > -1  && f < this.table[col].length; c--, f++ ) {
+      const element = this.table[c][f];
+      if (element === color) {
+        count++;
+      } else {
+        break;
+      }
+    }
+    return count;
+  }
+
+  calcRightUp(col: number, fil: number, color: string) {
+    let count = 0;
+    for(let c = col, f = fil; c < this.table.length  && f < this.table[col].length; c++, f++ ) {
+      const element = this.table[c][f];
+      if (element === color) {
+        count++;
+      } else {
+        break;
+      }
+    }
+    return count;
+  }
+
+  openDialog(player: Player) {
+    const dialogRef = this.dialog.open(AlertWinComponent, {
+      data: player
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'exit') {
+        // Return Home
+        this.router.navigateByUrl("");
+      } else {
+        this.table = [['', '', '', '', '', ''],['', '', '', '', '', ''],['', '', '', '', '', ''],['', '', '', '', '', ''],['', '', '', '', '', ''],['', '', '', '', '', ''],['', '', '', '', '', '']];
+      }
+    });
   }
 }

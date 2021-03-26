@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Player } from '../models/player.model';
 
 @Component({
   selector: 'app-alert-win',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlertWinComponent implements OnInit {
 
-  constructor() { }
+  constructor(@Inject(MAT_DIALOG_DATA) public player: Player) { }
 
   ngOnInit(): void {
   }
