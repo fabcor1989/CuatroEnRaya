@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AngularFireModule } from '@angular/fire';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+//import { AngularFireModule } from '@angular/fire';
+
+
 import { environment } from 'src/environments/environment';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -48,7 +50,7 @@ import { AlertWinnerComponent } from './alert-winner/alert-winner.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    //AngularFireModule.initializeApp(environment.firebaseConfig),
     BrowserAnimationsModule,
     ReactiveFormsModule,
     MatToolbarModule,

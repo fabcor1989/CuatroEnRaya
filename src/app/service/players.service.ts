@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';  //cette librairie est utilisé pour des changement de données constant, elle est plus reactif
 import { Player } from '../models/player.model';
 
 @Injectable({

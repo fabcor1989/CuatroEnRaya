@@ -1,15 +1,32 @@
-<div class="row container middle-xs center-xs">
-    <div class="col-xs-12">
-        <div class="row center-xs">
-            <div class="col-xs-12">
-                <h1 id="nameGame">
-                    Connect 4
-                </h1>
+
+<div class="row container bottom-xs center-xs">
+    
+        <div class="col-xs-12 title">
+            <div class="row center-xs">
+                <div class="col-xs-12">
+                    <h1 id="nameGame">
+                        Connect 4
+                    </h1>
+                </div>
             </div>
         </div>
+    
+
+    <div class="col-6 col-md-2 pad10right">
+        <mat-card id="red">
+            <div class="player">
+                <strong>
+                    {{player1.name}}
+                </strong>
+            </div>
+            <div class="pointer">{{player1.points}}</div>
+        </mat-card>
     </div>
 
     <div class="col colf" (click)="addF(0)">
+        <svg  class="ficha">
+            <circle cx="50" cy="50" r="40" stroke="#0B4E72" stroke-width="3" class="free animate__animated animate__bounce animate__infinite" [ngClass]="(turn.color === 'red')? 'fichRed': (turn.color === 'yellow')? 'fichYellow': 'free' " />
+        </svg>
         <svg  class="struct">
             <circle cx="50" cy="50" r="40" stroke="#0B4E72" stroke-width="3" class="free" [ngClass]="(table[0][5] === 'red')? 'fichRed': (table[0][5] === 'yellow')? 'fichYellow': 'free' " />
         </svg>
@@ -30,6 +47,9 @@
         </svg>
     </div>
     <div class="col colm" (click)="addF(1)">
+        <svg  class="ficha">
+            <circle cx="50" cy="50" r="40" stroke="#0B4E72" stroke-width="3" class="free animate__animated animate__bounce animate__infinite" [ngClass]="(turn.color === 'red')? 'fichRed': (turn.color === 'yellow')? 'fichYellow': 'free' " />
+        </svg>
         <svg  class="struct">
             <circle cx="50" cy="50" r="40" stroke="#0B4E72" stroke-width="3" class="free" [ngClass]="(table[1][5] === 'red')? 'fichRed': (table[1][5] === 'yellow')? 'fichYellow': 'free' " />
         </svg>
@@ -50,6 +70,9 @@
         </svg>
     </div>
     <div class="col colm" (click)="addF(2)">
+        <svg  class="ficha">
+            <circle cx="50" cy="50" r="40" stroke="#0B4E72" stroke-width="3" class="free animate__animated animate__bounce animate__infinite" [ngClass]="(turn.color === 'red')? 'fichRed': (turn.color === 'yellow')? 'fichYellow': 'free' " />
+        </svg>
         <svg  class="struct">
             <circle cx="50" cy="50" r="40" stroke="#0B4E72" stroke-width="3" class="free" [ngClass]="(table[2][5] === 'red')? 'fichRed': (table[2][5] === 'yellow')? 'fichYellow': 'free' "/>
         </svg>
@@ -70,6 +93,9 @@
         </svg>
     </div>
     <div class="col colm" (click)="addF(3)">
+        <svg  class="ficha">
+            <circle cx="50" cy="50" r="40" stroke="#0B4E72" stroke-width="3" class="free animate__animated animate__bounce animate__infinite" [ngClass]="(turn.color === 'red')? 'fichRed': (turn.color === 'yellow')? 'fichYellow': 'free' " />
+        </svg>
         <svg  class="struct">
             <circle cx="50" cy="50" r="40" stroke="#0B4E72" stroke-width="3" class="free" [ngClass]="(table[3][5] === 'red')? 'fichRed': (table[3][5] === 'yellow')? 'fichYellow': 'free' " />
         </svg>
@@ -90,6 +116,9 @@
         </svg>
     </div>
     <div class="col colm" (click)="addF(4)">
+        <svg  class="ficha">
+            <circle cx="50" cy="50" r="40" stroke="#0B4E72" stroke-width="3" class="free animate__animated animate__bounce animate__infinite" [ngClass]="(turn.color === 'red')? 'fichRed': (turn.color === 'yellow')? 'fichYellow': 'free' " />
+        </svg>
         <svg  class="struct">
             <circle cx="50" cy="50" r="40" stroke="#0B4E72" stroke-width="3" class="free" [ngClass]="(table[4][5] === 'red')? 'fichRed': (table[4][5] === 'yellow')? 'fichYellow': 'free' " />
         </svg>
@@ -110,6 +139,9 @@
         </svg>
     </div>
     <div class="col colm" (click)="addF(5)">
+        <svg  class="ficha">
+            <circle cx="50" cy="50" r="40" stroke="#0B4E72" stroke-width="3" class="free animate__animated animate__bounce animate__infinite" [ngClass]="(turn.color === 'red')? 'fichRed': (turn.color === 'yellow')? 'fichYellow': 'free' " />
+        </svg>
         <svg  class="struct">
             <circle cx="50" cy="50" r="40" stroke="#0B4E72" stroke-width="3" class="free" [ngClass]="(table[5][5] === 'red')? 'fichRed': (table[5][5] === 'yellow')? 'fichYellow': 'free' " />
         </svg>
@@ -130,6 +162,9 @@
         </svg>
     </div>
     <div class="col colE" (click)="addF(6)">
+        <svg  class="ficha">
+            <circle cx="50" cy="50" r="40" stroke="#0B4E72" stroke-width="3" class="free animate__animated animate__bounce animate__infinite" [ngClass]="(turn.color === 'red')? 'fichRed': (turn.color === 'yellow')? 'fichYellow': 'free' " />
+        </svg>
         <svg  class="struct">
             <circle cx="50" cy="50" r="40" stroke="#0B4E72" stroke-width="3" class="free" [ngClass]="(table[6][5] === 'red')? 'fichRed': (table[6][5] === 'yellow')? 'fichYellow': 'free' " />
         </svg>
@@ -149,29 +184,16 @@
             <circle cx="50" cy="50" r="40" stroke="#0B4E72" stroke-width="3" class="free" [ngClass]="(table[6][0] === 'red')? 'fichRed': (table[6][0] === 'yellow')? 'fichYellow': 'free' "/>
         </svg>
     </div>
-
-<div class="col-xs-12 margTop">
-    <div class="row between-xs">
-        <div class="col-xs-6 col-sm-2">
-            <mat-card id="red">
-                <div class="player">
-                    <strong>
-                        {{player1.name}}
-                    </strong>
-                </div>
-                <div class="pointer">{{player1.points}}</div>
-            </mat-card>
-        </div>
-        <div class="col-xs-6 col-sm-2">
-            <mat-card id="yellow">
-                <div class="player">
-                    <strong>
-                        {{player2.name}}
-                    </strong>
-                </div>
-                <div class="pointer">{{player2.points}}</div>
-            </mat-card>
-        </div>
+    
+    <div class="col-xs-6 col-sm-2 pad10left">
+        <mat-card id="yellow">
+            <div class="player">
+                <strong>
+                    {{player2.name}}
+                </strong>
+            </div>
+            <div class="pointer">{{player2.points}}</div>
+        </mat-card>
     </div>
-</div>
+    
 </div>

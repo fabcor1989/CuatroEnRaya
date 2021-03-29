@@ -1,14 +1,14 @@
 <div [ngClass]="(player.color == 'red')? 'mat-red':'mat-yellow'">
    
-<div class="row">
-    <h1>Win {{player.name}}</h1> 
+<div class="row center-xs">
+    <h1>{{player.name}} win this Round</h1> 
 </div>
 <div class="row end-xs">
-    <button mat-raised-button [mat-dialog-close]="'exit'" color="warn" style="margin-right: 15px;">
-        Exit
+    <button mat-raised-button [mat-dialog-close]="'Stop the game'" color="warn" style="margin-right: 15px;">
+        Stop the game
     </button>
     <button mat-raised-button color="primary" [mat-dialog-close]="'next'">
-        Next Game
+        Next Round
     </button>
 </div>
 </div>

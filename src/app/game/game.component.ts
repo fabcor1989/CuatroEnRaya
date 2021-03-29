@@ -24,7 +24,9 @@ export class GameComponent implements OnInit {
   constructor(private playersService: PlayersService,
               private router: Router,
               public dialog: MatDialog) { }
-
+//si les variables player1, player2, nGames du service sont valides
+//les valeurs sont affectees dans le component game
+//sinon redirection sur home
   ngOnInit(): void {
     if (!this.playersService.player1.value && !this.playersService.player2.value && !this.playersService.nGames.value) {
       this.router.navigateByUrl("")
@@ -43,8 +45,8 @@ export class GameComponent implements OnInit {
       this.nGames = this.playersService.nGames.value;
     }
   }
-
-  siguienteTurno() {
+//Tour suivant à l'autre joueur
+  setTour() {
     if (this.turn === this.player1) {
       this.turn = this.player2;
     } else {
@@ -53,7 +55,7 @@ export class GameComponent implements OnInit {
   }
 
   addF(col: number) {
-    // agregar en columna 
+    // Mettre la piece dans la colonne choisie
     let  fil = 0 ;
     for (let index = 0; index < this.table[col].length; index++) {
       if(this.table[col][index] === '') {
@@ -63,12 +65,25 @@ export class GameComponent implements OnInit {
       }
     }
 
-    //calcular Ganador
+    
     this.someWinner(col,fil,this.turn.color);
-    //Pasar turno
-    this.siguienteTurno();
+    
+    this.setTour();
   }
+//verifier s'il y a un gagnant
+//calculer si 4 pieces sont allignes
 
+//LOGIQUE DU CALCUL:
+//le calcul se fait
+//horizontal (vers la droite et gauche)
+//vertical (vers le bas, vers le haut il n'est pas possible)
+//diagonal RighDowntLeftUp
+//diagonal LeftDownRightU
+
+//EXEMPLE CALCUL HORIZONTAL
+//Depuis l'emplacement de la piece mise on calcul vers la droite le nb de pieces de la meme couleurs qui se suivent
+//puis le meme processus vers la gauche.
+//si l'addtion donne 4 
   someWinner(col: number, fil: number, color: string ) {
     const horizontal = this.calcRight(col,fil,color) + this.calcLeft(col,fil,color);
     const vertical = this.calcDown(col,fil,color);
@@ -79,7 +94,6 @@ export class GameComponent implements OnInit {
       this.turn.points++;
       this.nGameA++;
       if(this.nGameA <= this.nGames) {
-        // borrar tablero y alert
         this.openDialog(this.turn);
       } else {
         if(this.player1.points > this.player2.points) {
@@ -91,6 +105,7 @@ export class GameComponent implements OnInit {
     }
   }
 
+  //-------   DEBUT DES CALCULS       ---------------------------------------------------------------------------------
   calcRight(col: number, fil: number, color: string) {
     let count = 0 ;
     for (let index = col; index < this.table.length; index++) {
@@ -116,19 +131,6 @@ export class GameComponent implements OnInit {
     }
     return count;
   }
-
-  // calcUp(col: number, fil: number, color: string) {
-  //   let count = 0 ;
-  //   for (let index = fil; index < this.table[col].length; index++) {
-  //     const element = this.table[col][index];
-  //     if (element === color) {
-  //       count++;
-  //     } else {
-  //       break;
-  //     }
-  //   }
-  //   return count;
-  // }
 
   calcDown(col: number, fil: number, color: string) {
     let count = 0 ;
@@ -193,17 +195,23 @@ export class GameComponent implements OnInit {
         break;
       }
     }
-    return count;
+    return count; 
   }
+// -------  FIN DES CALCULS  ------------------------------------------------------------------------------
 
+
+
+
+//afficher la box du component alert win (round)
+//choix pour continuer ou abandoner le jeu
   openDialog(player: Player) {
     const dialogRef = this.dialog.open(AlertWinComponent, {
       data: player
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result === 'exit') {
-        // Return Home
+      if (result === 'Stop the game') {
+        // Return vers Home
         this.router.navigateByUrl("");
         this.playersService.endGame();
       } else {
@@ -211,6 +219,9 @@ export class GameComponent implements OnInit {
       }
     });
   }
+
+  //afficher la box du component alert winner
+  //apres la fermeture de la box redirection su rle home
   openDialogWinner(player: Player) {
     const dialogRef = this.dialog.open(AlertWinnerComponent, {
       data: player

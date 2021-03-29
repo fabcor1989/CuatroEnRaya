@@ -14,7 +14,8 @@ const routes: Routes = [
     component: GameComponent
   },
 
-  /* Redireccionar un path a un Path con componente existente */
+  /* Redirectioner le path avec le component HOME
+  Pour pas que un utilisateur puisse acceder au jeux sans saisir les nom de joueurs*/
   {
     path: "",
     redirectTo: "home",

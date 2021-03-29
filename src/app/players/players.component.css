@@ -1,13 +1,20 @@
 .ancho {
-    width: 100%;
+    width: 80%;
+}
+mat-card{
+    border-radius: 10px;
 }
 
-::ng-deep mat-icon#player1{
+mat-icon#player1{
     color: red;
+    font-size: 45px;
+    margin-inline-end: 9px;
 }
 
-::ng-deep mat-icon#player2{
+mat-icon#player2{
     color: rgb(255, 255, 0);
+    font-size: 45px;
+    margin-inline-end: 9px;
 }
 
 .margTop {
@@ -21,4 +28,11 @@
 
 .mat-card {
     background: rgba(255, 255, 255, 0.692);
+}
+.row{
+    font-size: 23px;
+}
+mat-icom{
+    font-size: 23px;
+    border-radius: 10px;
 }

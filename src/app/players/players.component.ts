@@ -12,7 +12,7 @@ import { PlayersService } from '../service/players.service';
 export class PlayersComponent implements OnInit {
 
   formPlayers: FormGroup;
-  nGamesArray = [3, 5];
+  //nGamesArray = [3, 5]; changement pour mode manuel en HTML
   constructor(private formBuild: FormBuilder,
               private playerService: PlayersService,
               ) {
@@ -22,6 +22,8 @@ export class PlayersComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //definir les valeurs du form pour les noms des deux joueurs et le nb de manches du jeux (3) 
+  //et definir la validation
   buildForm() {
     this.formPlayers = this.formBuild.group(
       {
@@ -32,7 +34,10 @@ export class PlayersComponent implements OnInit {
     );
   }
 
-
+//fonction pour le debut d'un jeux
+//si le form est valider
+//player1.name=selon form, points=0, couleur=rouge
+//player1.name=selon form, points=0, couleur=jaune
   startGame(event: Event) {
     event.preventDefault()
     if(this.formPlayers.valid) {
