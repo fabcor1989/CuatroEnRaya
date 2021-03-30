@@ -18,8 +18,12 @@ export class GameComponent implements OnInit {
   nGames  = undefined;
   nGameA = 1;
   turn: Player;
+  audio = new Audio('../../assets/ganador.mp3');
 
   table = [['', '', '', '', '', ''],['', '', '', '', '', ''],['', '', '', '', '', ''],['', '', '', '', '', ''],['', '', '', '', '', ''],['', '', '', '', '', ''],['', '', '', '', '', '']];
+
+  // esta variable  pausara la actividad en el tablero mientras se observa el juego ganador
+  stopWinner = false;
 
   constructor(private playersService: PlayersService,
               private router: Router,
@@ -91,17 +95,28 @@ export class GameComponent implements OnInit {
     const diagleftLeftDownRightUp =  this.calcLeftDown(col,fil,color) + this.calcRightUp(col,fil,color) -1;
 
     if((horizontal | vertical | diagRighDowntLeftUp| diagleftLeftDownRightUp) >= 4 ) {
+      // si encuentra un ganador mostramos el confeti con el div.stopWinner
+      this.stopWinner = true;
+      // suena un audio al Ganador :D
+      this.loadAudioAndPlay();
       this.turn.points++;
       this.nGameA++;
-      if(this.nGameA <= this.nGames) {
-        this.openDialog(this.turn);
-      } else {
-        if(this.player1.points > this.player2.points) {
-          this.openDialogWinner(this.player1);
-        }else{
-          this.openDialogWinner(this.player2);
-        }
-      }
+      //  setTimeOunt  detiene por 2000 = 2 segundos y ejecuta la funcion que se le envía
+      setTimeout(
+        () => {
+          if(this.nGameA <= this.nGames) {
+            this.openDialog(this.turn);
+          } else {
+            if(this.player1.points > this.player2.points) {
+              this.openDialogWinner(this.player1);
+            }else{
+              this.openDialogWinner(this.player2);
+            }
+          }
+          this.stopWinner = false;
+        },
+        2000
+      ) 
     }
   }
 
@@ -231,5 +246,10 @@ export class GameComponent implements OnInit {
       this.router.navigateByUrl("");
       this.playersService.endGame();
     });
+  }
+
+  loadAudioAndPlay() {
+    this.audio.load();
+    this.audio.play();
   }
 }

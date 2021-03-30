@@ -7,6 +7,7 @@
 .free {
     background: white;
     fill: #fff;
+    transition: r 2s;
 }
 
 
@@ -102,4 +103,16 @@ h1#nameGame {
 
 .fichYellow{
     fill: yellow
+}
+
+/* al activar el div.winStop lanzamos este gif de confeti */
+.winStop {
+    background: url(https://img.webme.com/pic/c/cssplantillas/confeti.gif), rgba(255, 255, 255, 0);
+    height: 100%;
+    width: 100%;
+    z-index: 99;
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
 }

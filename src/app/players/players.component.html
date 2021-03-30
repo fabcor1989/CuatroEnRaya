@@ -5,6 +5,9 @@
             <mat-label>Name Player 1</mat-label>
             <input matInput placeholder="Insert name player1" autocomplete="off" formControlName="name1"> 
             <mat-icon id="player1" matSuffix>fiber_manual_record</mat-icon>
+            <mat-error>
+              This field is mandatory
+            </mat-error>
           </mat-form-field>
     </div>
     <div class="row center-xs">
@@ -12,12 +15,15 @@
             <mat-label>Name Player 2</mat-label>
             <input matInput placeholder="Insert name player2" autocomplete="off" formControlName="name2">
             <mat-icon id="player2" matSuffix>fiber_manual_record</mat-icon>
+            <mat-error>
+              This field is mandatory
+            </mat-error>
           </mat-form-field>
     </div>
     <div class="row center-xs">
       <mat-button-toggle-group  formControlName="nGames" >
         <mat-button-toggle [value]="1">1 Round </mat-button-toggle>
-        <mat-button-toggle [value]="2">3 Rounds</mat-button-toggle>
+        <mat-button-toggle [value]="3">3 Rounds</mat-button-toggle>
         <mat-button-toggle [value]="5">5 Rounds</mat-button-toggle>
       </mat-button-toggle-group>
     </div>

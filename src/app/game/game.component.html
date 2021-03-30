@@ -43,7 +43,7 @@
             <circle cx="50" cy="50" r="40" stroke="#0B4E72" stroke-width="3" class="free" [ngClass]="(table[0][1] === 'red')? 'fichRed': (table[0][1] === 'yellow')? 'fichYellow': 'free' " />
         </svg>
         <svg  class="struct">
-            <circle cx="50" cy="50" r="40" stroke="#0B4E72" stroke-width="3" class="free" [ngClass]="(table[0][0] === 'red')? 'fichRed': (table[0][0] === 'yellow')? 'fichYellow': 'free' " />
+            <circle cx="50" cy="50" r="40" stroke="#0B4E72" stroke-width="3" class="free" [ngClass]="(table[0][0] === 'red')? 'fichRed': (table[0][0] === 'yellow')? 'fichYellow': 'free' "/>
         </svg>
     </div>
     <div class="col colm" (click)="addF(1)">
@@ -195,5 +195,9 @@
             <div class="pointer">{{player2.points}}</div>
         </mat-card>
     </div>
-    
+    <!-- Sobrepone una capa invisible mientras espera 2 segundos y mustra el mensaje 
+        Utiilizo la directiva ngIf para escuchar si stopWinner es True o False
+    -->
+    <div class="winStop" *ngIf="stopWinner"></div>
 </div>
+
