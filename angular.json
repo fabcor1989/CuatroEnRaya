@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "appClubEmpresarias": {
+    "connect4": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/appClubEmpresarias",
+            "outputPath": "dist/connect4",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -65,18 +65,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "appClubEmpresarias:build"
+            "browserTarget": "connect4:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "appClubEmpresarias:build:production"
+              "browserTarget": "connect4:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "appClubEmpresarias:build"
+            "browserTarget": "connect4:build"
           }
         },
         "test": {
@@ -114,11 +114,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "appClubEmpresarias:serve"
+            "devServerTarget": "connect4:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "appClubEmpresarias:serve:production"
+              "devServerTarget": "connect4:serve:production"
             }
           }
         },
@@ -129,7 +129,7 @@
       }
     }
   },
-  "defaultProject": "appClubEmpresarias",
+  "defaultProject": "connect4",
   "cli": {
     "analytics": false
   }

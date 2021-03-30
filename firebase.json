@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/appClubEmpresarias",
+    "public": "dist/connect4",
     "ignore": [
       "firebase.json",
       "**/.*",
