@@ -69,8 +69,10 @@ export class GameComponent implements OnInit {
       }
     }
 
-    
+
     this.someWinner(col,fil,this.turn.color);
+
+    this.setTour();
     
   }
 //verifier s'il y a un gagnant
@@ -104,7 +106,11 @@ export class GameComponent implements OnInit {
       setTimeout(
         () => {
           if(this.nGameA <= this.nGames) {
-            this.openDialog(this.turn);
+            if(this.player1.color == color) {
+              this.openDialog(this.player1);
+            } else {
+              this.openDialog(this.player2);
+            }
           } else {
             if(this.player1.points > this.player2.points) {
               this.openDialogWinner(this.player1);
@@ -113,7 +119,6 @@ export class GameComponent implements OnInit {
             }
           }
           this.stopWinner = false;
-          this.setTour();
         },
         2000
       ) 
