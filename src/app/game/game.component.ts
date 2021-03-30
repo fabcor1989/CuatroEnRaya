@@ -72,7 +72,6 @@ export class GameComponent implements OnInit {
     
     this.someWinner(col,fil,this.turn.color);
     
-    this.setTour();
   }
 //verifier s'il y a un gagnant
 //calculer si 4 pieces sont allignes
@@ -114,6 +113,7 @@ export class GameComponent implements OnInit {
             }
           }
           this.stopWinner = false;
+          this.setTour();
         },
         2000
       ) 
